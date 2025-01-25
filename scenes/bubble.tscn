@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bp58lhmflaeps"]
+[gd_scene load_steps=8 format=3 uid="uid://bp58lhmflaeps"]
 
 [ext_resource type="Script" path="res://scripts/bubble.gd" id="1_rqeq3"]
 
@@ -13,7 +13,44 @@ radius = 32.0624
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8aix"]
 size = Vector2(67, 66)
 
-[node name="bubble" type="RigidBody2D"]
+[sub_resource type="Animation" id="Animation_nbtnp"]
+resource_name = "click"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.466667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.61, 1.61), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_71hql"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kh4u7"]
+_data = {
+"RESET": SubResource("Animation_71hql"),
+"click": SubResource("Animation_nbtnp")
+}
+
+[node name="bubble" type="RigidBody2D" node_paths=PackedStringArray("animation")]
+collision_mask = 0
 input_pickable = true
 gravity_scale = -0.2
 lock_rotation = true
@@ -23,6 +60,7 @@ jiggle_width = 82.973
 width_variation = 0.252
 jiggle_speed = 5.495
 speed_variation = 0.25
+animation = NodePath("AnimationPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -32)
@@ -40,11 +78,11 @@ offset_top = -60.0
 offset_right = 28.0
 offset_bottom = -4.0
 mouse_default_cursor_shape = 2
-metadata/_edit_use_anchors_ = true
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, -31)
-shape = SubResource("RectangleShape2D_p8aix")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kh4u7")
+}
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

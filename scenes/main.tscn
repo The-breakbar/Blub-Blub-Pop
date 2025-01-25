@@ -1,28 +1,59 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbhc2k7e5tt25"]
+[gd_scene load_steps=11 format=3 uid="uid://bbhc2k7e5tt25"]
 
 [ext_resource type="PackedScene" uid="uid://bp58lhmflaeps" path="res://scenes/bubble.tscn" id="1_6874e"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_fyovj"]
 [ext_resource type="PackedScene" uid="uid://348v1ud6tw8v" path="res://scenes/bubble_spawner.tscn" id="2_0oukj"]
-[ext_resource type="PackedScene" uid="uid://dt0qnir5g3ft3" path="res://scenes/swordfish.tscn" id="3_ntar4"]
+[ext_resource type="Script" path="res://scripts/audio.gd" id="4_rt8me"]
+[ext_resource type="AudioStream" uid="uid://d1fhcjxh7j77l" path="res://sfx/pop1.mp3" id="5_53f0d"]
+[ext_resource type="AudioStream" uid="uid://pxo6pu5u0kif" path="res://sfx/pop2.mp3" id="6_w1xul"]
+[ext_resource type="AudioStream" uid="uid://dcchl0k0eru3l" path="res://sfx/pop3.mp3" id="7_ph8h2"]
+[ext_resource type="AudioStream" uid="uid://c027qn1esjc8" path="res://sfx/pop4.mp3" id="8_82nbu"]
+[ext_resource type="AudioStream" uid="uid://u3oft1842q3t" path="res://sfx/pop5.mp3" id="9_0yhn2"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q4a4a"]
+playback_mode = 1
+random_pitch = 1.2
+random_volume_offset_db = 1.0
+streams_count = 5
+stream_0/stream = ExtResource("5_53f0d")
+stream_1/stream = ExtResource("6_w1xul")
+stream_2/stream = ExtResource("7_ph8h2")
+stream_3/stream = ExtResource("8_82nbu")
+stream_4/stream = ExtResource("9_0yhn2")
 
 [node name="main" type="Node"]
+script = ExtResource("1_fyovj")
+start_windowed = true
 
 [node name="game" type="Node2D" parent="."]
 
 [node name="bubble" parent="game" instance=ExtResource("1_6874e")]
-position = Vector2(281, 537)
+position = Vector2(470, 676)
 
 [node name="bubble2" parent="game" instance=ExtResource("1_6874e")]
-position = Vector2(415, 499)
+position = Vector2(604, 638)
 
 [node name="bubble3" parent="game" instance=ExtResource("1_6874e")]
-position = Vector2(764, 528)
+position = Vector2(1090, 708)
 
 [node name="Node2D" parent="game" instance=ExtResource("2_0oukj")]
-position = Vector2(510, 597)
+position = Vector2(804, 946)
 spawn_time = 2.456
 x_offset = 81.531
 
 [node name="Swordfish" parent="game" instance=ExtResource("3_ntar4")]
 position = Vector2(520, 520)
 
-[node name="audio" type="Node" parent="."]
+[node name="audio" type="Node" parent="." node_paths=PackedStringArray("player", "timer")]
+script = ExtResource("4_rt8me")
+player = NodePath("AudioStreamPlayer")
+timer = NodePath("Timer")
+pops_per_min = 200.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="audio"]
+stream = SubResource("AudioStreamRandomizer_q4a4a")
+max_polyphony = 20
+
+[node name="Timer" type="Timer" parent="audio"]
+
+[connection signal="timeout" from="audio/Timer" to="audio" method="_on_timer_timeout"]
