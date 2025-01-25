@@ -25,6 +25,8 @@ func damage(amount: float):
 	animation.play("click")
 
 func bubble_popped():
+	Global.bubble_popped.emit()
+
 	# Delete node
 	queue_free()
 
@@ -40,7 +42,6 @@ func _physics_process(delta):
 	linear_velocity.x = jiggle_width * sin(jiggle_speed * time)
 
 	# Delete the bubble if it goes off the screen
-	# Make sure to use the screen position (with get_global_transform_with_canvas())
 	if get_global_transform_with_canvas().origin.y < -100:
 		queue_free()
 
