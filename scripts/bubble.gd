@@ -27,6 +27,11 @@ func _physics_process(delta):
 	# Change the horizontal velocity based on a sine wave
 	linear_velocity.x = jiggle_width * sin(jiggle_speed * time)
 
+	# Delete the bubble if it goes off the screen
+	# Make sure to use the screen position (with get_global_transform_with_canvas())
+	if get_global_transform_with_canvas().origin.y < -100:
+		queue_free()
+
 func _integrate_forces(state):
 	# Clamp the vertical velocity
 	var y_speed = min(abs(max_y_speed), abs(state.linear_velocity.y))

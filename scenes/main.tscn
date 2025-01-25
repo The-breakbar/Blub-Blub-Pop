@@ -1,23 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbhc2k7e5tt25"]
+[gd_scene load_steps=4 format=3 uid="uid://bbhc2k7e5tt25"]
 
 [ext_resource type="PackedScene" uid="uid://bp58lhmflaeps" path="res://scenes/bubble.tscn" id="1_6874e"]
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_fyovj"]
 [ext_resource type="PackedScene" uid="uid://348v1ud6tw8v" path="res://scenes/bubble_spawner.tscn" id="2_0oukj"]
 
 [node name="main" type="Node"]
+script = ExtResource("1_fyovj")
+start_windowed = true
 
 [node name="game" type="Node2D" parent="."]
 
 [node name="bubble" parent="game" instance=ExtResource("1_6874e")]
-position = Vector2(281, 537)
+position = Vector2(470, 676)
 
 [node name="bubble2" parent="game" instance=ExtResource("1_6874e")]
-position = Vector2(415, 499)
+position = Vector2(604, 638)
 
 [node name="bubble3" parent="game" instance=ExtResource("1_6874e")]
-position = Vector2(764, 528)
+position = Vector2(1090, 708)
 
 [node name="Node2D" parent="game" instance=ExtResource("2_0oukj")]
-position = Vector2(510, 597)
+position = Vector2(804, 946)
 spawn_time = 2.456
 x_offset = 81.531
 
