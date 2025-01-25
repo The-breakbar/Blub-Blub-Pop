@@ -1,8 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://bbhc2k7e5tt25"]
+[gd_scene load_steps=3 format=3 uid="uid://bbhc2k7e5tt25"]
 
 [ext_resource type="PackedScene" uid="uid://bp58lhmflaeps" path="res://scenes/bubble.tscn" id="1_6874e"]
+[ext_resource type="PackedScene" uid="uid://348v1ud6tw8v" path="res://scenes/bubble_spawner.tscn" id="2_0oukj"]
 
 [node name="main" type="Node2D"]
 
 [node name="bubble" parent="." instance=ExtResource("1_6874e")]
-position = Vector2(122, 154)
+position = Vector2(281, 537)
+
+[node name="bubble2" parent="." instance=ExtResource("1_6874e")]
+position = Vector2(352, 536)
+
+[node name="bubble3" parent="." instance=ExtResource("1_6874e")]
+position = Vector2(764, 528)
+
+[node name="Node2D" parent="." instance=ExtResource("2_0oukj")]
+position = Vector2(510, 597)
+spawn_time = 2.456
+x_offset = 81.531

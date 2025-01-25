@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://348v1ud6tw8v"]
+
+[ext_resource type="Script" path="res://scripts/bubble_spawner.gd" id="1_b7hg0"]
+[ext_resource type="PackedScene" uid="uid://bp58lhmflaeps" path="res://scenes/bubble.tscn" id="2_l25t1"]
+
+[sub_resource type="Gradient" id="Gradient_ivjst"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m8kjp"]
+gradient = SubResource("Gradient_ivjst")
+
+[node name="bubble_spawner" type="Node2D" node_paths=PackedStringArray("timer")]
+script = ExtResource("1_b7hg0")
+bubble_scene = ExtResource("2_l25t1")
+timer = NodePath("Timer")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_m8kjp")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
