@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bbhc2k7e5tt25"]
+[gd_scene load_steps=12 format=3 uid="uid://bbhc2k7e5tt25"]
 
 [ext_resource type="PackedScene" uid="uid://bp58lhmflaeps" path="res://scenes/bubble.tscn" id="1_6874e"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_fyovj"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dcchl0k0eru3l" path="res://sfx/pop3.mp3" id="7_ph8h2"]
 [ext_resource type="AudioStream" uid="uid://c027qn1esjc8" path="res://sfx/pop4.mp3" id="8_82nbu"]
 [ext_resource type="AudioStream" uid="uid://u3oft1842q3t" path="res://sfx/pop5.mp3" id="9_0yhn2"]
+[ext_resource type="PackedScene" uid="uid://dt0qnir5g3ft3" path="res://scenes/swordfish.tscn" id="10_fmn8c"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q4a4a"]
 playback_mode = 1
@@ -41,14 +42,12 @@ position = Vector2(804, 946)
 spawn_time = 2.456
 x_offset = 81.531
 
-[node name="Swordfish" parent="game" instance=ExtResource("3_ntar4")]
-position = Vector2(520, 520)
+[node name="Swordfish" parent="game" instance=ExtResource("10_fmn8c")]
+position = Vector2(744, 801)
 
-[node name="audio" type="Node" parent="." node_paths=PackedStringArray("player", "timer")]
+[node name="audio" type="Node" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("4_rt8me")
 player = NodePath("AudioStreamPlayer")
-timer = NodePath("Timer")
-pops_per_min = 200.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="audio"]
 stream = SubResource("AudioStreamRandomizer_q4a4a")
