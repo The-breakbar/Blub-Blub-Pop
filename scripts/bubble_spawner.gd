@@ -1,3 +1,4 @@
+class_name BubbleSpawner
 extends Node2D
 
 @export_range(0.1, 5.0) var spawn_time: float = 1.0

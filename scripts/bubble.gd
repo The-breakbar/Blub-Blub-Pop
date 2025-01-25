@@ -10,7 +10,7 @@ extends RigidBody2D
 @export var animation: AnimationPlayer
 
 var time: float = 0
-var health: float = 2.0
+@export var health: float = 1.0
 
 func _ready():
 	# Initialize randomized start state
@@ -20,9 +20,18 @@ func _ready():
 
 func damage(amount: float):
 	health -= amount
+
+	# If the bubble is dead, pop it
 	if health <= 0:
 		bubble_popped()
+		return
 
+	# Emit signal
+	Global.bubble_damaged.emit()
+
+	# Play the click animation
+	if animation.is_playing():
+		animation.stop()
 	animation.play("click")
 
 func bubble_popped():
