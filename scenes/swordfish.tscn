@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://dt0qnir5g3ft3"]
+
+[ext_resource type="Texture2D" uid="uid://cxykb0bknylcx" path="res://sprites/Fish.png" id="1_2qbnn"]
+[ext_resource type="Script" path="res://scripts/swordfish.gd" id="1_viysn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krxvx"]
+size = Vector2(154, 82)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5mkmf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_2qbnn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Swordfish" type="Area2D"]
+script = ExtResource("1_viysn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_krxvx")
+debug_color = Color(0.85098, 0.207843, 1, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_5mkmf")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

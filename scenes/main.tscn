@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bbhc2k7e5tt25"]
+[gd_scene load_steps=4 format=3 uid="uid://bbhc2k7e5tt25"]
 
 [ext_resource type="PackedScene" uid="uid://bp58lhmflaeps" path="res://scenes/bubble.tscn" id="1_6874e"]
 [ext_resource type="PackedScene" uid="uid://348v1ud6tw8v" path="res://scenes/bubble_spawner.tscn" id="2_0oukj"]
+[ext_resource type="PackedScene" uid="uid://dt0qnir5g3ft3" path="res://scenes/swordfish.tscn" id="3_ntar4"]
 
 [node name="main" type="Node"]
 
@@ -20,5 +21,8 @@ position = Vector2(764, 528)
 position = Vector2(510, 597)
 spawn_time = 2.456
 x_offset = 81.531
+
+[node name="Swordfish" parent="game" instance=ExtResource("3_ntar4")]
+position = Vector2(520, 520)
 
 [node name="audio" type="Node" parent="."]

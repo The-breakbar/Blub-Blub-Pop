@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp58lhmflaeps"]
+[gd_scene load_steps=6 format=3 uid="uid://bp58lhmflaeps"]
 
 [ext_resource type="Script" path="res://scripts/bubble.gd" id="1_rqeq3"]
 
@@ -10,8 +10,10 @@ gradient = SubResource("Gradient_d5tfx")
 [sub_resource type="CircleShape2D" id="CircleShape2D_ycnm3"]
 radius = 32.0624
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8aix"]
+size = Vector2(67, 66)
+
 [node name="bubble" type="RigidBody2D"]
-collision_mask = 0
 input_pickable = true
 gravity_scale = -0.2
 lock_rotation = true
@@ -38,6 +40,11 @@ offset_top = -60.0
 offset_right = 28.0
 offset_bottom = -4.0
 mouse_default_cursor_shape = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -31)
+shape = SubResource("RectangleShape2D_p8aix")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

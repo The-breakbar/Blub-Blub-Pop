@@ -1,3 +1,4 @@
 extends Node
 
-signal bubble_popped
+signal bubble_damaged()
+signal bubble_popped(points)
