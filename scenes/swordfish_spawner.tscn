@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bdvst1bngc1tm"]
+
+[ext_resource type="Script" path="res://scripts/swordfish_spawner.gd" id="1_obk4g"]
+[ext_resource type="PackedScene" uid="uid://cmac3ovn4a4uf" path="res://scenes/swordfish.tscn" id="2_mukb8"]
+
+[node name="SwordfishSpawner" type="Node2D" node_paths=PackedStringArray("timer")]
+script = ExtResource("1_obk4g")
+swordfish_scene = ExtResource("2_mukb8")
+timer = NodePath("Timer")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

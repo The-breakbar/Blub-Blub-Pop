@@ -28,4 +28,4 @@ func can_upgrade() -> bool:
         return false
     
 func buy_upgrade():
-    level = level+1
+    level = level + 1
