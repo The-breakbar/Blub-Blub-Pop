@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dcchl0k0eru3l" path="res://sfx/pop3.mp3" id="7_ph8h2"]
 [ext_resource type="AudioStream" uid="uid://c027qn1esjc8" path="res://sfx/pop4.mp3" id="8_82nbu"]
 [ext_resource type="AudioStream" uid="uid://u3oft1842q3t" path="res://sfx/pop5.mp3" id="9_0yhn2"]
-[ext_resource type="PackedScene" uid="uid://dt0qnir5g3ft3" path="res://scenes/swordfish.tscn" id="10_fmn8c"]
+[ext_resource type="PackedScene" uid="uid://cmac3ovn4a4uf" path="res://scenes/swordfish.tscn" id="10_fmn8c"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q4a4a"]
 playback_mode = 1
@@ -54,5 +54,53 @@ stream = SubResource("AudioStreamRandomizer_q4a4a")
 max_polyphony = 20
 
 [node name="Timer" type="Timer" parent="audio"]
+
+[node name="ui" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+mouse_filter = 2
+
+[node name="screenContainer" type="HBoxContainer" parent="ui"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 0
+
+[node name="game" type="ColorRect" parent="ui/screenContainer"]
+z_index = -1
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+color = Color(1, 1, 1, 0.584314)
+
+[node name="shop" type="ColorRect" parent="ui/screenContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0.211765)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/screenContainer/shop"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="CenterContainer" parent="ui/screenContainer/shop/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ui/screenContainer/shop/VBoxContainer/Control"]
+layout_mode = 2
+text = "Fishy Fishy Fish"
 
 [connection signal="timeout" from="audio/Timer" to="audio" method="_on_timer_timeout"]

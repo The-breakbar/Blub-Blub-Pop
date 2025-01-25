@@ -1,3 +1,4 @@
+class_name Bubble
 extends RigidBody2D
 
 @export_range(0, 200) var max_y_speed: float = 50

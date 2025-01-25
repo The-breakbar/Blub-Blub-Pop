@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dt0qnir5g3ft3"]
+[gd_scene load_steps=5 format=3 uid="uid://cmac3ovn4a4uf"]
 
 [ext_resource type="Texture2D" uid="uid://cxykb0bknylcx" path="res://sprites/Fish.png" id="1_2qbnn"]
 [ext_resource type="Script" path="res://scripts/swordfish.gd" id="1_viysn"]
@@ -24,7 +24,7 @@ script = ExtResource("1_viysn")
 shape = SubResource("RectangleShape2D_krxvx")
 debug_color = Color(0.85098, 0.207843, 1, 1)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_5mkmf")
 

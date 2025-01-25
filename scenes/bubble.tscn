@@ -46,7 +46,8 @@ _data = {
 "click": SubResource("Animation_nbtnp")
 }
 
-[node name="bubble" type="RigidBody2D" node_paths=PackedStringArray("animation")]
+[node name="bubble" type="RigidBody2D" node_paths=PackedStringArray("animation") groups=["bubbles"]]
+collision_mask = 0
 input_pickable = true
 gravity_scale = -0.2
 lock_rotation = true
