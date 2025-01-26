@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bbhc2k7e5tt25"]
+[gd_scene load_steps=32 format=3 uid="uid://bbhc2k7e5tt25"]
 
 [ext_resource type="PackedScene" uid="uid://bp58lhmflaeps" path="res://scenes/bubble.tscn" id="1_6874e"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_fyovj"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://dsayhxkge1spp" path="res://bg/alg/alg6.png" id="22_opcyo"]
 [ext_resource type="Texture2D" uid="uid://bqpapsn3qds0q" path="res://bg/alg/alg7.png" id="23_tegl3"]
 [ext_resource type="Script" path="res://scripts/shop.gd" id="24_g6b3s"]
+[ext_resource type="Script" path="res://scripts/status.gd" id="25_mw0l7"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q4a4a"]
 playback_mode = 1
@@ -160,8 +161,8 @@ max_polyphony = 50
 
 [node name="boingSound" type="AudioStreamPlayer" parent="audio"]
 stream = SubResource("AudioStreamRandomizer_vu0wl")
-volume_db = -18.0
-pitch_scale = 1.25
+volume_db = -25.0
+pitch_scale = 1.35
 max_polyphony = 50
 
 [node name="ui" type="Control" parent="."]
@@ -208,7 +209,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wvha3")
 
-[node name="shop" type="VBoxContainer" parent="ui/screenContainer/sidebar" node_paths=PackedStringArray("spawners_upgrade", "spawner_handler")]
+[node name="shop" type="VBoxContainer" parent="ui/screenContainer/sidebar" node_paths=PackedStringArray("spawners_upgrade", "spawner_handler", "spawner_speed_upgrade", "big_bubble_upgrade", "huge_bubble_upgrade")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -218,10 +219,71 @@ grow_vertical = 2
 script = ExtResource("24_g6b3s")
 spawners_upgrade = NodePath("spawners")
 spawner_handler = NodePath("../../../../game/spawnerHandler")
+spawner_speed_upgrade = NodePath("spawnerSpeed")
+big_bubble_upgrade = NodePath("bigBubbles")
+huge_bubble_upgrade = NodePath("hugeBubbles")
+
+[node name="status" type="MarginContainer" parent="ui/screenContainer/sidebar/shop" node_paths=PackedStringArray("money_label", "status_label")]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+script = ExtResource("25_mw0l7")
+money_label = NodePath("VBoxContainer/Label")
+status_label = NodePath("VBoxContainer/Label2")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ui/screenContainer/sidebar/shop/status"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="ui/screenContainer/sidebar/shop/status/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Money: 100000"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="ui/screenContainer/sidebar/shop/status/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Pops: 0/10"
+horizontal_alignment = 1
 
 [node name="spawners" parent="ui/screenContainer/sidebar/shop" instance=ExtResource("17_nibh2")]
 layout_mode = 2
 upgrade_name = "Spawner amount"
 
+[node name="Label" parent="ui/screenContainer/sidebar/shop/spawners" index="0"]
+text = "Spawner amount"
+
+[node name="spawnerSpeed" parent="ui/screenContainer/sidebar/shop" instance=ExtResource("17_nibh2")]
+layout_mode = 2
+upgrade_name = "Spawner speed"
+
+[node name="Label" parent="ui/screenContainer/sidebar/shop/spawnerSpeed" index="0"]
+text = "Spawner speed"
+
+[node name="bigBubbles" parent="ui/screenContainer/sidebar/shop" instance=ExtResource("17_nibh2")]
+layout_mode = 2
+upgrade_name = "Big bubble rate"
+level = 0
+
+[node name="Label" parent="ui/screenContainer/sidebar/shop/bigBubbles" index="0"]
+text = "Big bubble rate"
+
+[node name="hugeBubbles" parent="ui/screenContainer/sidebar/shop" instance=ExtResource("17_nibh2")]
+layout_mode = 2
+upgrade_name = "Huge bubble rate"
+level = 0
+
+[node name="Label" parent="ui/screenContainer/sidebar/shop/hugeBubbles" index="0"]
+text = "Huge bubble rate"
+
 [node name="bubble" parent="." instance=ExtResource("16_faeqy")]
 position = Vector2(786, 551)
+
+[editable path="ui/screenContainer/sidebar/shop/spawners"]
+[editable path="ui/screenContainer/sidebar/shop/spawnerSpeed"]
+[editable path="ui/screenContainer/sidebar/shop/bigBubbles"]
+[editable path="ui/screenContainer/sidebar/shop/hugeBubbles"]

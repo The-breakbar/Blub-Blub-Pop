@@ -23,7 +23,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_242bp"]
-radius = 75.0
+radius = 58.0775
 
 [sub_resource type="Animation" id="Animation_71hql"]
 length = 0.001
@@ -71,7 +71,7 @@ script = ExtResource("1_qnceg")
 max_y_speed = 28.378
 jiggle_width = 82.973
 width_variation = 0.252
-jiggle_speed = 5.495
+jiggle_speed = 2.638
 speed_variation = 0.25
 animation = NodePath("AnimationPlayer")
 animatedSprite = NodePath("visuals/Sprite2D")
@@ -82,8 +82,8 @@ points = 100
 [node name="visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="visuals"]
-position = Vector2(4, -3)
-scale = Vector2(0.158097, 0.158097)
+position = Vector2(3, -0.999999)
+scale = Vector2(0.127659, 0.127659)
 sprite_frames = SubResource("SpriteFrames_7g4px")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -97,10 +97,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -68.0
-offset_top = -68.0
-offset_right = 68.0
-offset_bottom = 70.0
+offset_left = -54.0
+offset_top = -53.0
+offset_right = 54.0
+offset_bottom = 57.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2

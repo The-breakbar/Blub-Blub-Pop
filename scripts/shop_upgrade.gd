@@ -13,12 +13,17 @@ func _ready():
 	update_text()
 
 func _on_button_pressed():
+	if Global.money < cost_function.call(level):
+		return
+
+	Global.money -= cost_function.call(level)
 	level += 1
 	label.text = get_label_text()
 	button.text = get_button_text()
 
 	# Perform the upgrade
 	upgrade_function.call(level)
+	Global.upgrade_bought.emit()
 
 func update_text():
 	label.text = get_label_text()

@@ -38,6 +38,8 @@ func damage(amount: float):
 	animation.play("click")
 
 func bubble_popped():
+	Global.money += points
+	Global.pops += 1
 	Global.bubble_popped.emit(points)
 	button.hide()
 	animatedSprite.play("default")
