@@ -1,6 +1,7 @@
 extends Node
 
 @export var start_windowed: bool = false
+@export var status: Status
 
 func _ready():
 	if start_windowed:
@@ -21,3 +22,7 @@ func _input(event):
 
 	if event.is_action_pressed("quit"):
 		get_tree().quit()
+
+	if event.is_action_pressed("cheatcode"):
+		Global.money += 1000
+		status.draw()

@@ -47,6 +47,6 @@ func _ready():
 	puffer_fish_upgrade.set_upgrade_function(func(x):
 		pufferfish.show()
 		# enable the processing of the node again
-		pufferfish.set_process(true)
+		pufferfish.enable()
 		pufferfish.on_bubblefish_upgraded(3.0 + x * 1.0, 1.1, 1.0 + x * 0.1)
 	)

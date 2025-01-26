@@ -12,11 +12,19 @@ func _ready():
 	connect("bubblefish_upgraded", Callable(self, "on_bubblefish_upgraded"))
 
 	# disable this node
+	disable()
+
+func disable():
 	set_process(false)
 	hide()
-	
+	$CollisionShape2D.disabled = true
 
-func _process(delta):
+func enable():
+	set_process(true)
+	show()
+	$CollisionShape2D.disabled = false
+	
+func _physics_process(delta):
 	# Move the ball
 	position += velocity * delta
 
