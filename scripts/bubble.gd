@@ -55,7 +55,7 @@ func _physics_process(delta):
 	time += delta
 
 	# Change the horizontal velocity based on a sine wave
-	linear_velocity.x = jiggle_width * sin(jiggle_speed * time)
+	linear_velocity.x = jiggle_width * cos(jiggle_speed * time)
 
 	# Delete the bubble if it goes off the screen
 	if get_global_transform_with_canvas().origin.y < -100:

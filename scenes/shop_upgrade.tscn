@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://qp8wk6cjeiwi"]
+
+[ext_resource type="Script" path="res://scripts/shop_upgrade.gd" id="1_77hdn"]
+[ext_resource type="Theme" uid="uid://bqudsujc614cb" path="res://bubble_theme.tres" id="1_x4rjr"]
+
+[node name="shopUpgrade" type="HBoxContainer" node_paths=PackedStringArray("button", "label")]
+custom_minimum_size = Vector2(0, 100)
+theme = ExtResource("1_x4rjr")
+theme_override_constants/separation = 20
+alignment = 1
+script = ExtResource("1_77hdn")
+button = NodePath("Button")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Bubble Spawners (Lvl 1) "
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+text = "Buy (300)"
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

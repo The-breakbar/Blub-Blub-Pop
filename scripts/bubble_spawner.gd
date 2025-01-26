@@ -18,3 +18,7 @@ func _on_timer_timeout():
 	bubble.position.x += randf_range(-x_offset, x_offset)
 
 	add_child(bubble)
+
+func set_spawn_time(new_spawn_time: float):
+	timer.wait_time = new_spawn_time
+	timer.start()

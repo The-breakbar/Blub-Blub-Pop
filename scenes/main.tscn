@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bbhc2k7e5tt25"]
+[gd_scene load_steps=31 format=3 uid="uid://bbhc2k7e5tt25"]
 
 [ext_resource type="PackedScene" uid="uid://bp58lhmflaeps" path="res://scenes/bubble.tscn" id="1_6874e"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_fyovj"]
@@ -13,9 +13,19 @@
 [ext_resource type="AudioStream" uid="uid://c027qn1esjc8" path="res://sfx/pop4.mp3" id="8_82nbu"]
 [ext_resource type="AudioStream" uid="uid://u3oft1842q3t" path="res://sfx/pop5.mp3" id="9_0yhn2"]
 [ext_resource type="PackedScene" uid="uid://cmac3ovn4a4uf" path="res://scenes/swordfish.tscn" id="10_fmn8c"]
-[ext_resource type="Texture2D" uid="uid://djhtkgamvls1t" path="res://textures/bg1.jpg" id="11_5phu8"]
 [ext_resource type="AudioStream" uid="uid://d2oe0r3hysifp" path="res://sfx/boing.mp3" id="11_c308t"]
+[ext_resource type="Theme" uid="uid://bqudsujc614cb" path="res://bubble_theme.tres" id="15_wa8x2"]
+[ext_resource type="Texture2D" uid="uid://urfk3x3pam0f" path="res://bg/bg2.jpg" id="16_1icsi"]
 [ext_resource type="PackedScene" uid="uid://8t0tvutnu8rc" path="res://scenes/huge_bubble.tscn" id="16_faeqy"]
+[ext_resource type="Texture2D" uid="uid://ba7o4kb14jntv" path="res://bg/alg/alg1.png" id="17_2x7mp"]
+[ext_resource type="PackedScene" uid="uid://qp8wk6cjeiwi" path="res://scenes/shop_upgrade.tscn" id="17_nibh2"]
+[ext_resource type="Texture2D" uid="uid://cbouxxmnr8kg2" path="res://bg/alg/alg2.png" id="18_swdor"]
+[ext_resource type="Texture2D" uid="uid://sfdy7on4gucj" path="res://bg/alg/alg3.png" id="19_ol02l"]
+[ext_resource type="Texture2D" uid="uid://cnycuunppltr6" path="res://bg/alg/alg4.png" id="20_nnuib"]
+[ext_resource type="Texture2D" uid="uid://ckddykxhqyj4g" path="res://bg/alg/alg5.png" id="21_g02f5"]
+[ext_resource type="Texture2D" uid="uid://dsayhxkge1spp" path="res://bg/alg/alg6.png" id="22_opcyo"]
+[ext_resource type="Texture2D" uid="uid://bqpapsn3qds0q" path="res://bg/alg/alg7.png" id="23_tegl3"]
+[ext_resource type="Script" path="res://scripts/shop.gd" id="24_g6b3s"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_q4a4a"]
 playback_mode = 1
@@ -35,23 +45,67 @@ random_volume_offset_db = 1.0
 streams_count = 1
 stream_0/stream = ExtResource("11_c308t")
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_71eqy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_2x7mp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_swdor")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ol02l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_nnuib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_g02f5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_opcyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_tegl3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_opcyo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_g02f5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_nnuib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ol02l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_swdor")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvha3"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+content_margin_bottom = 5.0
+bg_color = Color(0.0213203, 0.0662081, 0.281651, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.216199, 0.408693, 0.85226, 1)
+
 [node name="main" type="Node"]
 script = ExtResource("1_fyovj")
 start_windowed = true
 
 [node name="game" type="Node2D" parent="."]
-
-[node name="bubble" parent="game" instance=ExtResource("1_6874e")]
-position = Vector2(470, 676)
-
-[node name="bubble2" parent="game" instance=ExtResource("1_6874e")]
-position = Vector2(604, 638)
-
-[node name="bubble3" parent="game" instance=ExtResource("1_6874e")]
-position = Vector2(1090, 708)
-
-[node name="Swordfish" parent="game" instance=ExtResource("10_fmn8c")]
-position = Vector2(1372, 833)
 
 [node name="spawnerHandler" type="Control" parent="game" node_paths=PackedStringArray("center")]
 layout_mode = 3
@@ -64,12 +118,23 @@ mouse_filter = 2
 script = ExtResource("5_l36dy")
 center = NodePath("center")
 spawner = ExtResource("2_0oukj")
-start_spawners = 3
 x_offset = 70.0
 metadata/_edit_lock_ = true
 
 [node name="center" type="Marker2D" parent="game/spawnerHandler"]
 position = Vector2(600, 36)
+
+[node name="bubble" parent="game" instance=ExtResource("1_6874e")]
+position = Vector2(470, 676)
+
+[node name="bubble2" parent="game" instance=ExtResource("1_6874e")]
+position = Vector2(604, 638)
+
+[node name="bubble3" parent="game" instance=ExtResource("1_6874e")]
+position = Vector2(1090, 708)
+
+[node name="Swordfish" parent="game" instance=ExtResource("10_fmn8c")]
+position = Vector2(1372, 833)
 
 [node name="SwordfishSpawner" parent="game" instance=ExtResource("6_du5xt")]
 position = Vector2(-171, 501)
@@ -108,6 +173,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
 mouse_filter = 2
+theme = ExtResource("15_wa8x2")
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
@@ -126,29 +192,36 @@ z_index = -1
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
-texture = ExtResource("11_5phu8")
+texture = ExtResource("16_1icsi")
 expand_mode = 2
 
-[node name="shop" type="ColorRect" parent="ui/screenContainer"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ui/screenContainer/game"]
+z_index = 1
+position = Vector2(692, 919)
+scale = Vector2(0.283078, 0.283078)
+sprite_frames = SubResource("SpriteFrames_71eqy")
+autoplay = "default"
+frame_progress = 0.327694
+
+[node name="sidebar" type="Panel" parent="ui/screenContainer"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
-color = Color(0.361693, 0.594677, 0.934889, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_wvha3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ui/screenContainer/shop"]
+[node name="shop" type="VBoxContainer" parent="ui/screenContainer/sidebar" node_paths=PackedStringArray("spawners_upgrade", "spawner_handler")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("24_g6b3s")
+spawners_upgrade = NodePath("spawners")
+spawner_handler = NodePath("../../../../game/spawnerHandler")
 
-[node name="Control" type="CenterContainer" parent="ui/screenContainer/shop/VBoxContainer"]
-custom_minimum_size = Vector2(0, 100)
+[node name="spawners" parent="ui/screenContainer/sidebar/shop" instance=ExtResource("17_nibh2")]
 layout_mode = 2
-
-[node name="Label" type="Label" parent="ui/screenContainer/shop/VBoxContainer/Control"]
-layout_mode = 2
-text = "0"
+upgrade_name = "Spawner amount"
 
 [node name="bubble" parent="." instance=ExtResource("16_faeqy")]
 position = Vector2(786, 551)

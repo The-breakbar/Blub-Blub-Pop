@@ -1,3 +1,4 @@
+class_name SpawnerHandler
 extends Control
 
 @export var center: Marker2D
@@ -31,3 +32,7 @@ func add_spawner():
 
 	spawners.append(new_spawner)
 	add_child(new_spawner)
+
+func update_spawner_times(new_spawn_time: float):
+	for c_spawner in spawners:
+		c_spawner.set_spawn_time(new_spawn_time)
