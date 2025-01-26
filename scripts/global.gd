@@ -1,11 +1,11 @@
 extends Node
 
 signal bubble_damaged(damage: float)
-signal bubble_popped(points: float)
+signal bubble_popped(points: int)
 
 # Dictionary of upgrades
 var upgrades: Dictionary = {
-	"swordfish": null  # Placeholder for the SwordfishUpgrade instance
+	"swordfish": null # Placeholder for the SwordfishUpgrade instance
 }
 
 func _ready():

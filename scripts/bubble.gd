@@ -13,6 +13,7 @@ extends RigidBody2D
 
 var time: float = 0
 @export var health: float = 1.0
+@export var points: int = 1
 
 func _ready():
 	# Initialize randomized start state
@@ -37,7 +38,7 @@ func damage(amount: float):
 	animation.play("click")
 
 func bubble_popped():
-	Global.bubble_popped.emit()
+	Global.bubble_popped.emit(points)
 	button.hide()
 	animatedSprite.play("default")
 

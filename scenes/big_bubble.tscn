@@ -1,29 +1,29 @@
-[gd_scene load_steps=10 format=3 uid="uid://bp58lhmflaeps"]
+[gd_scene load_steps=10 format=3 uid="uid://slsexj6sirmd"]
 
-[ext_resource type="Script" path="res://scripts/bubble.gd" id="1_rqeq3"]
-[ext_resource type="Texture2D" uid="uid://wwpitn58cttg" path="res://sprites/bubble/128/bubble0_128.png" id="2_q6jnj"]
-[ext_resource type="Texture2D" uid="uid://degk2tgjjfk17" path="res://sprites/bubble/128/bubble3_128.png" id="3_73my8"]
-[ext_resource type="Texture2D" uid="uid://bd4026w2b8mdb" path="res://sprites/bubble/128/bubble4_128.png" id="4_v13ax"]
+[ext_resource type="Script" path="res://scripts/bubble.gd" id="1_1x73d"]
+[ext_resource type="Texture2D" uid="uid://bruijefm8lwwe" path="res://sprites/bubble/256/bubble0_256.png" id="2_bhcel"]
+[ext_resource type="Texture2D" uid="uid://dcql66vfvawd3" path="res://sprites/bubble/256/bubble3_256.png" id="3_a7obu"]
+[ext_resource type="Texture2D" uid="uid://bw2aly58b1pdf" path="res://sprites/bubble/256/bubble4_256.png" id="4_xyhpf"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xuolb"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_7eeox"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_q6jnj")
+"texture": ExtResource("2_bhcel")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_73my8")
+"texture": ExtResource("3_a7obu")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_v13ax")
+"texture": ExtResource("4_xyhpf")
 }],
 "loop": false,
 "name": &"default",
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ycnm3"]
-radius = 22.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_bf8bl"]
+radius = 40.0125
 
 [sub_resource type="Animation" id="Animation_71hql"]
 length = 0.001
@@ -67,7 +67,7 @@ collision_mask = 0
 input_pickable = true
 gravity_scale = -0.2
 lock_rotation = true
-script = ExtResource("1_rqeq3")
+script = ExtResource("1_1x73d")
 max_y_speed = 28.378
 jiggle_width = 82.973
 width_variation = 0.252
@@ -76,16 +76,18 @@ speed_variation = 0.25
 animation = NodePath("AnimationPlayer")
 animatedSprite = NodePath("visuals/Sprite2D")
 button = NodePath("Button")
+health = 5.0
+points = 10
 
 [node name="visuals" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="visuals"]
-position = Vector2(1, -1)
-scale = Vector2(0.73, 0.73)
-sprite_frames = SubResource("SpriteFrames_xuolb")
+position = Vector2(2, -2)
+scale = Vector2(0.653047, 0.653047)
+sprite_frames = SubResource("SpriteFrames_7eeox")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_ycnm3")
+shape = SubResource("CircleShape2D_bf8bl")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="Button" type="Button" parent="."]
