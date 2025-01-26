@@ -13,6 +13,10 @@ func _ready():
 	var swordfish_upgrade = load("res://scripts/Upgrades/swordfish_upgrade.gd").new()
 	upgrades["swordfish"] = swordfish_upgrade
 
+	# Add bubblefish_upgrade instance
+	var bubblefish_upgrade = load("res://scripts/Upgrades/bubblefish_upgrade.gd").new()
+	upgrades["bubblefish"] = bubblefish_upgrade
+
 
 # returns all available upgrades. So all upgrades that can be unlocked or have been unlocked. Upgrades are still available even if their level cap is reached.
 func get_available_upgrades():
