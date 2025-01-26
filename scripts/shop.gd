@@ -15,6 +15,8 @@ extends VBoxContainer
 
 @export var click_power_upgrade: ShopUpgrade
 
+@export var puffer_fish_upgrade: ShopUpgrade
+
 func _ready():
 	spawners_upgrade.set_cost_function(func(x: int): return round(20 + 10 * x ** 2.5))
 	spawners_upgrade.set_upgrade_function(func(_x: int): spawner_handler.add_spawner())
@@ -29,7 +31,7 @@ func _ready():
 	huge_bubble_upgrade.set_upgrade_function(func(_x: int): Global.huge_bubble_rate += 0.05)
 
 	swordfish_rate_upgrade.set_cost_function(func(x: int): return 100 + 10 * x ** 3)
-	swordfish_rate_upgrade.set_upgrade_function(func(x: int): swordfish_spawner.set_spawns_per_min(2.0 + 5 * x))
+	swordfish_rate_upgrade.set_upgrade_function(func(x: int): swordfish_spawner.set_spawns_per_min(5.0 + 5 * x))
 
 	swordfish_speed_upgrade.set_cost_function(func(x: int): return 50 + 5 * x ** 2)
 	swordfish_speed_upgrade.set_upgrade_function(func(_x: int): Global.sword_fish_speed += 0.25)
@@ -39,3 +41,6 @@ func _ready():
 
 	click_power_upgrade.set_cost_function(func(x: int): return round(100 + 10 * x ** 2))
 	click_power_upgrade.set_upgrade_function(func(_x: int): Global.click_power += 1.0)
+
+	puffer_fish_upgrade.set_cost_function(func(x: int): return round(100 + 10 * x ** 3))
+	#puffer_fish_upgrade.set_upgrade_function(func(_x: int): puffer_fish_spawner.add_spawner())
