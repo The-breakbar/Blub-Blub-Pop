@@ -10,6 +10,10 @@ var pops: int = 0
 var big_bubble_rate: float = 0.0
 var huge_bubble_rate: float = 0.0
 
+var sword_fish_speed: float = 1.0
+
+var money_multiplier: float = 1.0
+
 # Dictionary of upgrades
 var upgrades: Dictionary = {
 	"swordfish": null # Placeholder for the SwordfishUpgrade instance

@@ -77,7 +77,7 @@ animation = NodePath("AnimationPlayer")
 animatedSprite = NodePath("visuals/Sprite2D")
 button = NodePath("Button")
 health = 5.0
-points = 10
+points = 25
 
 [node name="visuals" type="Node2D" parent="."]
 

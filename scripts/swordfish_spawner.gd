@@ -15,7 +15,7 @@ var max_time: float = 0.0
 func _ready():
 	timer = $Timer
 	timer.wait_time = 60.0 / spawns_per_min
-	timer.start()
+	#timer.start()
 
 	var swordfish_upgrade = Global.upgrades["swordfish"]
 	if swordfish_upgrade:
@@ -36,11 +36,11 @@ func _on_swordfish_upgraded(damage: float, min_time: float, max_time: float):
 	self.damage = damage
 	self.min_time = min_time
 	self.max_time = max_time
-	set_next_spawn_time()
+	#set_next_spawn_time()
 
-func set_next_spawn_time():
-	timer.wait_time = randf_range(min_time, max_time)
-	timer.start()
+# func set_next_spawn_time():
+# 	timer.wait_time = randf_range(min_time, max_time)
+# 	timer.start()
 
 func _on_timer_timeout():
 	# Create a new swordfish
@@ -50,3 +50,8 @@ func _on_timer_timeout():
 	swordfish.position.y += randf_range(-vertical_offset, vertical_offset)
 
 	add_child(swordfish)
+
+func set_spawns_per_min(new_spawns_per_min: float):
+	spawns_per_min = new_spawns_per_min
+	timer.wait_time = 60.0 / spawns_per_min
+	timer.start()

@@ -76,6 +76,7 @@ speed_variation = 0.217
 animation = NodePath("AnimationPlayer")
 animatedSprite = NodePath("visuals/Sprite2D")
 button = NodePath("Button")
+points = 5
 
 [node name="visuals" type="Node2D" parent="."]
 

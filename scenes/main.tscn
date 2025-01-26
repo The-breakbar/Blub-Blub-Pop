@@ -1,6 +1,5 @@
-[gd_scene load_steps=32 format=3 uid="uid://bbhc2k7e5tt25"]
+[gd_scene load_steps=29 format=3 uid="uid://bbhc2k7e5tt25"]
 
-[ext_resource type="PackedScene" uid="uid://bp58lhmflaeps" path="res://scenes/bubble.tscn" id="1_6874e"]
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_fyovj"]
 [ext_resource type="PackedScene" uid="uid://348v1ud6tw8v" path="res://scenes/bubble_spawner.tscn" id="2_0oukj"]
 [ext_resource type="Script" path="res://scripts/audio.gd" id="4_rt8me"]
@@ -8,15 +7,13 @@
 [ext_resource type="Script" path="res://scripts/spawner_handler.gd" id="5_l36dy"]
 [ext_resource type="PackedScene" path="res://scenes/swordfish_spawner.tscn" id="6_du5xt"]
 [ext_resource type="AudioStream" uid="uid://pxo6pu5u0kif" path="res://sfx/pop2.mp3" id="6_w1xul"]
-[ext_resource type="PackedScene" uid="uid://slsexj6sirmd" path="res://scenes/big_bubble.tscn" id="7_o4a22"]
 [ext_resource type="AudioStream" uid="uid://dcchl0k0eru3l" path="res://sfx/pop3.mp3" id="7_ph8h2"]
 [ext_resource type="AudioStream" uid="uid://c027qn1esjc8" path="res://sfx/pop4.mp3" id="8_82nbu"]
 [ext_resource type="AudioStream" uid="uid://u3oft1842q3t" path="res://sfx/pop5.mp3" id="9_0yhn2"]
-[ext_resource type="PackedScene" uid="uid://cmac3ovn4a4uf" path="res://scenes/swordfish.tscn" id="10_fmn8c"]
 [ext_resource type="AudioStream" uid="uid://d2oe0r3hysifp" path="res://sfx/boing.mp3" id="11_c308t"]
+[ext_resource type="AudioStream" uid="uid://diga8g88ib08o" path="res://sfx/bgMusic.mp3" id="15_pqiau"]
 [ext_resource type="Theme" uid="uid://bqudsujc614cb" path="res://bubble_theme.tres" id="15_wa8x2"]
 [ext_resource type="Texture2D" uid="uid://urfk3x3pam0f" path="res://bg/bg2.jpg" id="16_1icsi"]
-[ext_resource type="PackedScene" uid="uid://8t0tvutnu8rc" path="res://scenes/huge_bubble.tscn" id="16_faeqy"]
 [ext_resource type="Texture2D" uid="uid://ba7o4kb14jntv" path="res://bg/alg/alg1.png" id="17_2x7mp"]
 [ext_resource type="PackedScene" uid="uid://qp8wk6cjeiwi" path="res://scenes/shop_upgrade.tscn" id="17_nibh2"]
 [ext_resource type="Texture2D" uid="uid://cbouxxmnr8kg2" path="res://bg/alg/alg2.png" id="18_swdor"]
@@ -119,36 +116,16 @@ mouse_filter = 2
 script = ExtResource("5_l36dy")
 center = NodePath("center")
 spawner = ExtResource("2_0oukj")
+start_spawners = 2
 x_offset = 70.0
 metadata/_edit_lock_ = true
 
 [node name="center" type="Marker2D" parent="game/spawnerHandler"]
 position = Vector2(600, 36)
 
-[node name="bubble" parent="game" instance=ExtResource("1_6874e")]
-position = Vector2(470, 676)
-
-[node name="bubble2" parent="game" instance=ExtResource("1_6874e")]
-position = Vector2(604, 638)
-
-[node name="bubble3" parent="game" instance=ExtResource("1_6874e")]
-position = Vector2(1090, 708)
-
-[node name="Swordfish" parent="game" instance=ExtResource("10_fmn8c")]
-position = Vector2(1372, 833)
-
 [node name="SwordfishSpawner" parent="game" instance=ExtResource("6_du5xt")]
 position = Vector2(-171, 501)
 spawns_per_min = 20.0
-
-[node name="Node2D" parent="game" instance=ExtResource("7_o4a22")]
-position = Vector2(572, 816)
-
-[node name="bubble4" parent="game" instance=ExtResource("7_o4a22")]
-position = Vector2(846, 752)
-
-[node name="bubble5" parent="game" instance=ExtResource("7_o4a22")]
-position = Vector2(1075, 872)
 
 [node name="audio" type="Node" parent="." node_paths=PackedStringArray("popPlayer", "boingPlayer")]
 script = ExtResource("4_rt8me")
@@ -164,6 +141,12 @@ stream = SubResource("AudioStreamRandomizer_vu0wl")
 volume_db = -25.0
 pitch_scale = 1.35
 max_polyphony = 50
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource("15_pqiau")
+volume_db = -20.0
+autoplay = true
+parameters/looping = false
 
 [node name="ui" type="Control" parent="."]
 layout_mode = 3
@@ -209,7 +192,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wvha3")
 
-[node name="shop" type="VBoxContainer" parent="ui/screenContainer/sidebar" node_paths=PackedStringArray("spawners_upgrade", "spawner_handler", "spawner_speed_upgrade", "big_bubble_upgrade", "huge_bubble_upgrade")]
+[node name="shop" type="VBoxContainer" parent="ui/screenContainer/sidebar" node_paths=PackedStringArray("spawners_upgrade", "spawner_handler", "spawner_speed_upgrade", "big_bubble_upgrade", "huge_bubble_upgrade", "swordfish_spawner", "swordfish_rate_upgrade", "swordfish_speed_upgrade")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -222,6 +205,9 @@ spawner_handler = NodePath("../../../../game/spawnerHandler")
 spawner_speed_upgrade = NodePath("spawnerSpeed")
 big_bubble_upgrade = NodePath("bigBubbles")
 huge_bubble_upgrade = NodePath("hugeBubbles")
+swordfish_spawner = NodePath("../../../../game/SwordfishSpawner")
+swordfish_rate_upgrade = NodePath("sfRate")
+swordfish_speed_upgrade = NodePath("sfSpeed")
 
 [node name="status" type="MarginContainer" parent="ui/screenContainer/sidebar/shop" node_paths=PackedStringArray("money_label", "status_label")]
 layout_mode = 2
@@ -280,13 +266,26 @@ level = 0
 [node name="Label" parent="ui/screenContainer/sidebar/shop/hugeBubbles" index="0"]
 text = "Huge bubble rate"
 
-[node name="bubble" parent="." instance=ExtResource("16_faeqy")]
-position = Vector2(786, 551)
+[node name="sfRate" parent="ui/screenContainer/sidebar/shop" instance=ExtResource("17_nibh2")]
+layout_mode = 2
+upgrade_name = "Swordfish rate"
+level = 0
 
-[node name="Swordfish" parent="." instance=ExtResource("10_fmn8c")]
-position = Vector2(258, 559)
+[node name="Label" parent="ui/screenContainer/sidebar/shop/sfRate" index="0"]
+text = "Swordfish rate"
+
+[node name="sfSpeed" parent="ui/screenContainer/sidebar/shop" instance=ExtResource("17_nibh2")]
+layout_mode = 2
+upgrade_name = "Swordfish speed"
+level = 0
+
+[node name="Label" parent="ui/screenContainer/sidebar/shop/sfSpeed" index="0"]
+text = "Swordfish speed
+"
 
 [editable path="ui/screenContainer/sidebar/shop/spawners"]
 [editable path="ui/screenContainer/sidebar/shop/spawnerSpeed"]
 [editable path="ui/screenContainer/sidebar/shop/bigBubbles"]
 [editable path="ui/screenContainer/sidebar/shop/hugeBubbles"]
+[editable path="ui/screenContainer/sidebar/shop/sfRate"]
+[editable path="ui/screenContainer/sidebar/shop/sfSpeed"]

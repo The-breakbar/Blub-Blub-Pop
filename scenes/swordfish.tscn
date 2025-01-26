@@ -54,13 +54,15 @@ size = Vector2(125.625, 27.25)
 
 [node name="Swordfish" type="Area2D"]
 script = ExtResource("1_viysn")
+damage = 100.0
+speed = 120.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(18, -6)
 scale = Vector2(0.403581, 0.403581)
 sprite_frames = SubResource("SpriteFrames_38c6q")
 autoplay = "default"
-frame_progress = 0.460227
+frame_progress = 0.315548
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

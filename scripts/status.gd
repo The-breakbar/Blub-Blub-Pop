@@ -11,5 +11,5 @@ func _ready():
 	Global.upgrade_bought.connect(func(): draw())
 
 func draw():
-	money_label.text = "Money: " + str(Global.money)
-	status_label.text = "Pops: " + str(Global.pops) + "/10k"
+	money_label.text = "Money: " + str(round(Global.money))
+	status_label.text = "Pops: " + str(Global.pops) + "/10000"
