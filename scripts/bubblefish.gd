@@ -31,8 +31,10 @@ func _on_body_entered(body: Node2D) -> void:
 		var bubble = body as Bubble
 		bubble.damage(damage)
 
-func on_bubblefish_upgraded(damage: float, speed: float, size: float) -> void:
+func on_bubblefish_upgraded(damage: float, factor: float, size: float) -> void:
 	print("Recieved Swordfish upgrade signal")
 	self.damage = damage
-	self.velocity = Vector2(speed, speed)
+	var xspeed = self.velocity[0]
+	var yspeed = self.velocity[1]
+	self.velocity = Vector2(xspeed * factor, yspeed * factor)
 	scale = Vector2(size, size)
