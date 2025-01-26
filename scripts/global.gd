@@ -4,7 +4,7 @@ signal bubble_damaged(damage: float)
 signal bubble_popped(points: int)
 signal upgrade_bought()
 
-var money: float = 0.0
+var money: float = 1000000.0
 var pops: int = 0
 
 var big_bubble_rate: float = 0.0
@@ -13,6 +13,8 @@ var huge_bubble_rate: float = 0.0
 var sword_fish_speed: float = 1.0
 
 var money_multiplier: float = 1.0
+
+var click_power: float = 1.0
 
 # Dictionary of upgrades
 var upgrades: Dictionary = {

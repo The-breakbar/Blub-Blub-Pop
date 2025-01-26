@@ -11,6 +11,10 @@ extends VBoxContainer
 @export var swordfish_rate_upgrade: ShopUpgrade
 @export var swordfish_speed_upgrade: ShopUpgrade
 
+@export var money_mult_upgrade: ShopUpgrade
+
+@export var click_power_upgrade: ShopUpgrade
+
 func _ready():
 	spawners_upgrade.set_cost_function(func(x: int): return round(20 + 10 * x ** 2.5))
 	spawners_upgrade.set_upgrade_function(func(_x: int): spawner_handler.add_spawner())
@@ -29,3 +33,9 @@ func _ready():
 
 	swordfish_speed_upgrade.set_cost_function(func(x: int): return 50 + 5 * x ** 2)
 	swordfish_speed_upgrade.set_upgrade_function(func(_x: int): Global.sword_fish_speed += 0.25)
+
+	money_mult_upgrade.set_cost_function(func(x: int): return round(200 + 10 * (x + 1) ** 3))
+	money_mult_upgrade.set_upgrade_function(func(_x: int): Global.money_multiplier += 0.1)
+
+	click_power_upgrade.set_cost_function(func(x: int): return round(100 + 10 * x ** 2))
+	click_power_upgrade.set_upgrade_function(func(_x: int): Global.click_power += 1.0)

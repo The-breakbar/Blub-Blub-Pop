@@ -116,7 +116,6 @@ mouse_filter = 2
 script = ExtResource("5_l36dy")
 center = NodePath("center")
 spawner = ExtResource("2_0oukj")
-start_spawners = 2
 x_offset = 70.0
 metadata/_edit_lock_ = true
 
@@ -192,7 +191,7 @@ custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wvha3")
 
-[node name="shop" type="VBoxContainer" parent="ui/screenContainer/sidebar" node_paths=PackedStringArray("spawners_upgrade", "spawner_handler", "spawner_speed_upgrade", "big_bubble_upgrade", "huge_bubble_upgrade", "swordfish_spawner", "swordfish_rate_upgrade", "swordfish_speed_upgrade")]
+[node name="shop" type="VBoxContainer" parent="ui/screenContainer/sidebar" node_paths=PackedStringArray("spawners_upgrade", "spawner_handler", "spawner_speed_upgrade", "big_bubble_upgrade", "huge_bubble_upgrade", "swordfish_spawner", "swordfish_rate_upgrade", "swordfish_speed_upgrade", "money_mult_upgrade", "click_power_upgrade")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -208,6 +207,8 @@ huge_bubble_upgrade = NodePath("hugeBubbles")
 swordfish_spawner = NodePath("../../../../game/SwordfishSpawner")
 swordfish_rate_upgrade = NodePath("sfRate")
 swordfish_speed_upgrade = NodePath("sfSpeed")
+money_mult_upgrade = NodePath("money")
+click_power_upgrade = NodePath("click")
 
 [node name="status" type="MarginContainer" parent="ui/screenContainer/sidebar/shop" node_paths=PackedStringArray("money_label", "status_label")]
 layout_mode = 2
@@ -283,9 +284,27 @@ level = 0
 text = "Swordfish speed
 "
 
+[node name="money" parent="ui/screenContainer/sidebar/shop" instance=ExtResource("17_nibh2")]
+layout_mode = 2
+upgrade_name = "Money multiplier"
+level = 0
+
+[node name="Label" parent="ui/screenContainer/sidebar/shop/money" index="0"]
+text = "Money Multiplier
+"
+
+[node name="click" parent="ui/screenContainer/sidebar/shop" instance=ExtResource("17_nibh2")]
+layout_mode = 2
+upgrade_name = "Click power"
+
+[node name="Label" parent="ui/screenContainer/sidebar/shop/click" index="0"]
+text = "Click power"
+
 [editable path="ui/screenContainer/sidebar/shop/spawners"]
 [editable path="ui/screenContainer/sidebar/shop/spawnerSpeed"]
 [editable path="ui/screenContainer/sidebar/shop/bigBubbles"]
 [editable path="ui/screenContainer/sidebar/shop/hugeBubbles"]
 [editable path="ui/screenContainer/sidebar/shop/sfRate"]
 [editable path="ui/screenContainer/sidebar/shop/sfSpeed"]
+[editable path="ui/screenContainer/sidebar/shop/money"]
+[editable path="ui/screenContainer/sidebar/shop/click"]

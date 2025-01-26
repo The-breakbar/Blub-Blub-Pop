@@ -38,7 +38,7 @@ func damage(amount: float):
 	animation.play("click")
 
 func bubble_popped():
-	Global.money += points
+	Global.money += points * Global.money_multiplier
 	Global.pops += 1
 	Global.bubble_popped.emit(points)
 	button.hide()
@@ -50,7 +50,7 @@ func _on_sprite_2d_animation_finished():
 
 # On click
 func _on_button_pressed():
-	damage(1.0)
+	damage(Global.click_power)
 
 # Bubble movement
 func _physics_process(delta):
