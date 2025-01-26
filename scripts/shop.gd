@@ -29,7 +29,7 @@ func _ready():
 	huge_bubble_upgrade.set_upgrade_function(func(_x: int): Global.huge_bubble_rate += 0.05)
 
 	swordfish_rate_upgrade.set_cost_function(func(x: int): return 100 + 10 * x ** 3)
-	swordfish_rate_upgrade.set_upgrade_function(func(x: int): swordfish_spawner.set_spawns_per_min(20.0 + 5 * x))
+	swordfish_rate_upgrade.set_upgrade_function(func(x: int): swordfish_spawner.set_spawns_per_min(2.0 + 5 * x))
 
 	swordfish_speed_upgrade.set_cost_function(func(x: int): return 50 + 5 * x ** 2)
 	swordfish_speed_upgrade.set_upgrade_function(func(_x: int): Global.sword_fish_speed += 0.25)
