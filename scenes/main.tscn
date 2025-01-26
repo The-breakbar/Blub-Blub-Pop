@@ -283,6 +283,9 @@ text = "Huge bubble rate"
 [node name="bubble" parent="." instance=ExtResource("16_faeqy")]
 position = Vector2(786, 551)
 
+[node name="Swordfish" parent="." instance=ExtResource("10_fmn8c")]
+position = Vector2(258, 559)
+
 [editable path="ui/screenContainer/sidebar/shop/spawners"]
 [editable path="ui/screenContainer/sidebar/shop/spawnerSpeed"]
 [editable path="ui/screenContainer/sidebar/shop/bigBubbles"]

@@ -1,13 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmac3ovn4a4uf"]
+[gd_scene load_steps=10 format=3 uid="uid://cmac3ovn4a4uf"]
 
-[ext_resource type="Texture2D" uid="uid://cxykb0bknylcx" path="res://sprites/Fish.png" id="1_2qbnn"]
 [ext_resource type="Script" path="res://scripts/swordfish.gd" id="1_viysn"]
+[ext_resource type="Texture2D" uid="uid://bsb2u3s3s0fut" path="res://sprites/swordfish/sword1 (Mittel).png" id="2_ykki3"]
+[ext_resource type="Texture2D" uid="uid://chfq0ikgj5pct" path="res://sprites/swordfish/sword2 (Mittel).png" id="3_pcceu"]
+[ext_resource type="Texture2D" uid="uid://4s1s7crjqwk8" path="res://sprites/swordfish/sword3 (Mittel).png" id="4_rc3bt"]
+[ext_resource type="Texture2D" uid="uid://b7xwc3a3nc577" path="res://sprites/swordfish/sword4 (Mittel).png" id="5_7ov6o"]
+[ext_resource type="Texture2D" uid="uid://dyhi85teqi5qd" path="res://sprites/swordfish/sword5 (Mittel).png" id="6_16nua"]
+[ext_resource type="Texture2D" uid="uid://dyq8kdgv8pyp6" path="res://sprites/swordfish/sword6 (Mittel).png" id="7_6lcnp"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_5mkmf"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_38c6q"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_2qbnn")
+"texture": ExtResource("2_ykki3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pcceu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rc3bt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7ov6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_16nua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_6lcnp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_16nua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7ov6o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_rc3bt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_pcceu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ykki3")
 }],
 "loop": true,
 "name": &"default",
@@ -15,18 +50,22 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_krxvx"]
-size = Vector2(38, 15)
+size = Vector2(125.625, 27.25)
 
 [node name="Swordfish" type="Area2D"]
 script = ExtResource("1_viysn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-sprite_frames = SubResource("SpriteFrames_5mkmf")
+position = Vector2(18, -6)
+scale = Vector2(0.403581, 0.403581)
+sprite_frames = SubResource("SpriteFrames_38c6q")
+autoplay = "default"
+frame_progress = 0.460227
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(79, 5)
+position = Vector2(121, -8)
 shape = SubResource("RectangleShape2D_krxvx")
-debug_color = Color(0.85098, 0.207843, 1, 1)
+debug_color = Color(0.855167, 0.21, 1, 0.376471)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
