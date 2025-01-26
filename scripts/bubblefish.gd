@@ -1,3 +1,4 @@
+class_name Bubblefish
 extends Area2D
 
 # Speed and direction of the ball
@@ -8,7 +9,11 @@ var velocity: Vector2 = Vector2(200, 200)
 func _ready():
 	# Connect the body_entered signal to detect when objects enter the ball's area
 	connect("body_entered", Callable(self, "_on_body_entered"))
-	connect("bubblefish_upgraded", Callable(self, "_on_bubblefish_upgraded"))
+	connect("bubblefish_upgraded", Callable(self, "on_bubblefish_upgraded"))
+
+	# disable this node
+	set_process(false)
+	hide()
 
 func _process(delta):
 	# Move the ball
@@ -25,7 +30,7 @@ func _on_body_entered(body: Node2D) -> void:
 		var bubble = body as Bubble
 		bubble.damage(damage)
 
-func _on_bubblefish_upgraded(damage: float, speed: float, size: float) -> void:
+func on_bubblefish_upgraded(damage: float, speed: float, size: float) -> void:
 	print("Recieved Swordfish upgrade signal")
 	self.damage = damage
 	self.velocity = Vector2(speed, speed)

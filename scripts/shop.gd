@@ -16,6 +16,7 @@ extends VBoxContainer
 @export var click_power_upgrade: ShopUpgrade
 
 @export var puffer_fish_upgrade: ShopUpgrade
+@export var pufferfish: Bubblefish
 
 func _ready():
 	spawners_upgrade.set_cost_function(func(x: int): return round(20 + 10 * x ** 2.5))
@@ -43,4 +44,8 @@ func _ready():
 	click_power_upgrade.set_upgrade_function(func(_x: int): Global.click_power += 1.0)
 
 	puffer_fish_upgrade.set_cost_function(func(x: int): return round(100 + 10 * x ** 3))
-	#puffer_fish_upgrade.set_upgrade_function(func(_x: int): puffer_fish_spawner.add_spawner())
+	puffer_fish_upgrade.set_upgrade_function(func(x):
+		pufferfish.show()
+		pufferfish.set_process_input(true)
+		pufferfish.on_bubblefish_upgraded(3.0 + x * 1.0, 200 + x * 20, 1.0 + x * 0.1)
+	)

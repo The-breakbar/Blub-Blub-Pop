@@ -1,21 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://etcq8f1jvtot"]
+[gd_scene load_steps=4 format=3 uid="uid://dlvp4aefvy1c8"]
 
-[ext_resource type="Texture2D" uid="uid://b01ng7rfoksbk" path="res://sprites/bubblefish.PNG" id="1_1fodc"]
 [ext_resource type="Script" path="res://scripts/bubblefish.gd" id="1_juga3"]
+[ext_resource type="Texture2D" uid="uid://cu0vtt8mxm4tp" path="res://sprites/puffer.png" id="2_0uatg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tmftr"]
 radius = 34.0
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_227fs"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_1fodc")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
 
 [node name="Bubblefish" type="Area2D"]
 script = ExtResource("1_juga3")
@@ -23,6 +12,7 @@ script = ExtResource("1_juga3")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_tmftr")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.169811, 0.169811)
-sprite_frames = SubResource("SpriteFrames_227fs")
+[node name="AnimatedSprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -11)
+scale = Vector2(0.156368, 0.157036)
+texture = ExtResource("2_0uatg")
