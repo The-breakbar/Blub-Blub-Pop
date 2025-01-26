@@ -14,6 +14,7 @@ func _ready():
 	# disable this node
 	set_process(false)
 	hide()
+	
 
 func _process(delta):
 	# Move the ball

@@ -46,6 +46,7 @@ func _ready():
 	puffer_fish_upgrade.set_cost_function(func(x: int): return round(100 + 10 * x ** 3))
 	puffer_fish_upgrade.set_upgrade_function(func(x):
 		pufferfish.show()
-		pufferfish.set_process_input(true)
+		# enable the processing of the node again
+		pufferfish.set_process(true)
 		pufferfish.on_bubblefish_upgraded(3.0 + x * 1.0, 200 + x * 20, 1.0 + x * 0.1)
 	)
