@@ -9,7 +9,7 @@ var velocity: Vector2 = Vector2(200, 200)
 func _ready():
 	# Connect the body_entered signal to detect when objects enter the ball's area
 	connect("body_entered", Callable(self, "_on_body_entered"))
-	connect("bubblefish_upgraded", Callable(self, "on_bubblefish_upgraded"))
+	#connect("bubblefish_upgraded", Callable(self, "on_bubblefish_upgraded"))
 
 	# disable this node
 	disable()

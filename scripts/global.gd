@@ -4,7 +4,7 @@ signal bubble_damaged(damage: float)
 signal bubble_popped(points: int)
 signal upgrade_bought()
 
-var money: float = 0.0
+var money: float = 0
 var pops: int = 0
 
 var big_bubble_rate: float = 0.0

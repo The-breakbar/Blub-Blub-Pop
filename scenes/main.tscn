@@ -5,11 +5,11 @@
 [ext_resource type="Script" path="res://scripts/audio.gd" id="4_rt8me"]
 [ext_resource type="AudioStream" uid="uid://d1fhcjxh7j77l" path="res://sfx/pop1.mp3" id="5_53f0d"]
 [ext_resource type="Script" path="res://scripts/spawner_handler.gd" id="5_l36dy"]
-[ext_resource type="PackedScene" uid="uid://bdvst1bngc1tm" path="res://scenes/swordfish_spawner.tscn" id="6_du5xt"]
+[ext_resource type="PackedScene" path="res://scenes/swordfish_spawner.tscn" id="6_du5xt"]
 [ext_resource type="AudioStream" uid="uid://pxo6pu5u0kif" path="res://sfx/pop2.mp3" id="6_w1xul"]
 [ext_resource type="AudioStream" uid="uid://dcchl0k0eru3l" path="res://sfx/pop3.mp3" id="7_ph8h2"]
 [ext_resource type="AudioStream" uid="uid://c027qn1esjc8" path="res://sfx/pop4.mp3" id="8_82nbu"]
-[ext_resource type="PackedScene" path="res://scenes/bubblefish.tscn" id="8_ryf0r"]
+[ext_resource type="PackedScene" uid="uid://dlvp4aefvy1c8" path="res://scenes/bubblefish.tscn" id="8_ryf0r"]
 [ext_resource type="AudioStream" uid="uid://u3oft1842q3t" path="res://sfx/pop5.mp3" id="9_0yhn2"]
 [ext_resource type="PackedScene" path="res://scenes/bubblefish_spawner.tscn" id="9_qe68x"]
 [ext_resource type="AudioStream" uid="uid://d2oe0r3hysifp" path="res://sfx/boing.mp3" id="11_c308t"]
@@ -103,7 +103,6 @@ border_color = Color(0.216199, 0.408693, 0.85226, 1)
 
 [node name="main" type="Node" node_paths=PackedStringArray("status")]
 script = ExtResource("1_fyovj")
-start_windowed = true
 status = NodePath("ui/screenContainer/sidebar/shop/status")
 
 [node name="game" type="Node2D" parent="."]
@@ -142,17 +141,18 @@ boingPlayer = NodePath("boingSound")
 
 [node name="popSound" type="AudioStreamPlayer" parent="audio"]
 stream = SubResource("AudioStreamRandomizer_q4a4a")
+volume_db = 3.0
 max_polyphony = 50
 
 [node name="boingSound" type="AudioStreamPlayer" parent="audio"]
 stream = SubResource("AudioStreamRandomizer_vu0wl")
-volume_db = -25.0
+volume_db = -20.0
 pitch_scale = 1.35
 max_polyphony = 50
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("15_pqiau")
-volume_db = -20.0
+volume_db = -17.0
 autoplay = true
 parameters/looping = false
 
