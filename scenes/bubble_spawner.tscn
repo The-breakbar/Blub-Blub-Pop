@@ -10,8 +10,6 @@ gradient = SubResource("Gradient_ivjst")
 
 [node name="bubble_spawner" type="Node2D" node_paths=PackedStringArray("timer")]
 script = ExtResource("1_b7hg0")
-spawn_time = 2.5
-x_offset = 80.0
 bubble_scene = ExtResource("2_l25t1")
 timer = NodePath("Timer")
 
@@ -19,5 +17,6 @@ timer = NodePath("Timer")
 texture = SubResource("GradientTexture2D_m8kjp")
 
 [node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -4,6 +4,9 @@ extends Node2D
 @export var swordfish_scene: PackedScene
 @export var timer: Timer
 
+@export_range(0, 1000) var vertical_offset: float = 300.0
+@export_range(0, 100) var spawns_per_min: float = 60.0
+
 var damage: float = 0.0
 var min_time: float = 0.0
 var max_time: float = 0.0
@@ -11,10 +14,13 @@ var max_time: float = 0.0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	timer = $Timer
+	timer.wait_time = 60.0 / spawns_per_min
+	timer.start()
+
 	var swordfish_upgrade = Global.upgrades["swordfish"]
 	if swordfish_upgrade:
 		print("Swordfish upgrade found")
-		set_next_spawn_time()
+		#set_next_spawn_time()
 		# swordfish_upgrade.connect("spawn_timing_updated", self, "_on_spawn_timing_updated")
 		# _on_spawn_timing_updated(swordfish_upgrade.get_spawn_interval())
 		# check if the signal is connected
@@ -36,15 +42,11 @@ func set_next_spawn_time():
 	timer.wait_time = randf_range(min_time, max_time)
 	timer.start()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
 func _on_timer_timeout():
 	# Create a new swordfish
 	var swordfish = swordfish_scene.instantiate()
 
 	# Randomly offset the swordfish's y position
-	swordfish.position.x += randf_range(-10, 10)
+	swordfish.position.y += randf_range(-vertical_offset, vertical_offset)
 
 	add_child(swordfish)

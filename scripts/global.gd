@@ -5,7 +5,7 @@ signal bubble_popped(points: float)
 
 # Dictionary of upgrades
 var upgrades: Dictionary = {
-    "swordfish": null  # Placeholder for the SwordfishUpgrade instance
+	"swordfish": null  # Placeholder for the SwordfishUpgrade instance
 }
 
 func _ready():

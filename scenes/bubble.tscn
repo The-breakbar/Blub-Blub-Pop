@@ -1,11 +1,26 @@
-[gd_scene load_steps=8 format=3 uid="uid://bp58lhmflaeps"]
+[gd_scene load_steps=10 format=3 uid="uid://bp58lhmflaeps"]
 
 [ext_resource type="Script" path="res://scripts/bubble.gd" id="1_rqeq3"]
+[ext_resource type="Texture2D" uid="uid://bruijefm8lwwe" path="res://sprites/bubble/256/bubble0_256.png" id="2_rjqw4"]
+[ext_resource type="Texture2D" uid="uid://dcql66vfvawd3" path="res://sprites/bubble/256/bubble3_256.png" id="5_0cx2r"]
+[ext_resource type="Texture2D" uid="uid://bw2aly58b1pdf" path="res://sprites/bubble/256/bubble4_256.png" id="6_ul78x"]
 
-[sub_resource type="Gradient" id="Gradient_d5tfx"]
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_nb7qe"]
-gradient = SubResource("Gradient_d5tfx")
+[sub_resource type="SpriteFrames" id="SpriteFrames_xuolb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rjqw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0cx2r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ul78x")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ycnm3"]
 radius = 32.0624
@@ -15,7 +30,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/path = NodePath("visuals:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -31,7 +46,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/path = NodePath("visuals:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -47,7 +62,7 @@ _data = {
 "click": SubResource("Animation_nbtnp")
 }
 
-[node name="bubble" type="RigidBody2D" node_paths=PackedStringArray("animation") groups=["bubbles"]]
+[node name="bubble" type="RigidBody2D" node_paths=PackedStringArray("animation", "animatedSprite", "button") groups=["bubbles"]]
 collision_mask = 0
 input_pickable = true
 gravity_scale = -0.2
@@ -59,14 +74,19 @@ width_variation = 0.252
 jiggle_speed = 5.495
 speed_variation = 0.25
 animation = NodePath("AnimationPlayer")
-health = 3.0
+animatedSprite = NodePath("visuals/Sprite2D")
+button = NodePath("Button")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_nb7qe")
+[node name="visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="visuals"]
+position = Vector2(2, -1)
+scale = Vector2(0.579, 0.579)
+sprite_frames = SubResource("SpriteFrames_xuolb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_ycnm3")
-debug_color = Color(0.937255, 0, 0.623529, 0.0941176)
+debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="Button" type="Button" parent="."]
 modulate = Color(1, 1, 1, 0)
@@ -75,10 +95,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -28.0
-offset_top = -28.0
-offset_right = 28.0
-offset_bottom = 28.0
+offset_left = -29.0
+offset_top = -29.0
+offset_right = 30.0
+offset_bottom = 30.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
@@ -89,4 +109,5 @@ libraries = {
 }
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="animation_finished" from="visuals/Sprite2D" to="." method="_on_sprite_2d_animation_finished"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

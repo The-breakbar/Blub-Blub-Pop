@@ -8,6 +8,8 @@ extends RigidBody2D
 @export_range(0, 0.5) var speed_variation: float = 0.0
 
 @export var animation: AnimationPlayer
+@export var animatedSprite: AnimatedSprite2D
+@export var button: Button
 
 var time: float = 0
 @export var health: float = 1.0
@@ -36,8 +38,11 @@ func damage(amount: float):
 
 func bubble_popped():
 	Global.bubble_popped.emit()
+	button.hide()
+	animatedSprite.play("default")
 
-	# Delete node
+# After animation has finished, delete the bubble
+func _on_sprite_2d_animation_finished():
 	queue_free()
 
 # On click
