@@ -142,19 +142,19 @@ boingPlayer = NodePath("boingSound")
 [node name="popSound" type="AudioStreamPlayer" parent="audio"]
 stream = SubResource("AudioStreamRandomizer_q4a4a")
 volume_db = 3.0
-max_polyphony = 50
+max_polyphony = 20
 
 [node name="boingSound" type="AudioStreamPlayer" parent="audio"]
 stream = SubResource("AudioStreamRandomizer_vu0wl")
 volume_db = -20.0
 pitch_scale = 1.35
-max_polyphony = 50
+max_polyphony = 20
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource("15_pqiau")
 volume_db = -17.0
 autoplay = true
-parameters/looping = false
+parameters/looping = true
 
 [node name="ui" type="Control" parent="."]
 layout_mode = 3

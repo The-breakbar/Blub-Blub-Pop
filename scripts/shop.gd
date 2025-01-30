@@ -23,7 +23,7 @@ func _ready():
 	spawners_upgrade.set_upgrade_function(func(_x: int): spawner_handler.add_spawner())
 
 	spawner_speed_upgrade.set_cost_function(func(x: int): return round(10 + 5 * x ** 2.5))
-	spawner_speed_upgrade.set_upgrade_function(func(x: int): spawner_handler.update_spawner_times(2.0 - (x - 1) * 0.1))
+	spawner_speed_upgrade.set_upgrade_function(func(x: int): spawner_handler.update_spawner_times(max(0.1, 2.0 - (x - 1) * 0.1)))
 
 	big_bubble_upgrade.set_cost_function(func(x: int): return 2 * (2 * x + 5) ** 2)
 	big_bubble_upgrade.set_upgrade_function(func(_x: int): Global.big_bubble_rate += 0.05)

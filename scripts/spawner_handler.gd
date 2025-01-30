@@ -34,5 +34,7 @@ func add_spawner():
 	add_child(new_spawner)
 
 func update_spawner_times(new_spawn_time: float):
+	spawn_time = new_spawn_time
+
 	for c_spawner in spawners:
 		c_spawner.set_spawn_time(new_spawn_time)
